@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Favourite Character - Metawin</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 280px;
+      background: #f8f8f8;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px 40px;
+      box-sizing: border-box;
+      background: #fff0f5;
+    }
+
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      background: url('metawin-banner.gif') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px #000;
+      margin-bottom: 30px;
+      border-radius: 12px;
+    }
+
+    .hero-banner::after {
+      content: '|';
+      animation: blink 1s step-start infinite;
+      margin-left: 5px;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+
+    .character-section {
+      background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      color: #333;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .character-section.dark {
+      background: #1a1a1a;
+      color: #f8f8f8;
+    }
+
+    h1, h3 {
+      color: #d6336c;
+    }
+
+    .quote {
+      font-style: italic;
+      color: #666;
+      margin: 10px 0 30px;
+    }
+
+    .dark-mode .quote {
+      color: #ccc;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 30px auto;
+      overflow: hidden;
+    }
+
+    .slider-wrapper {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    .slider-wrapper img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      transition: clip-path 0.3s ease-in-out;
+    }
+
+    .slider-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #ff69b4;
+      transition: left 0.3s ease;
+      text-align: center;
+      font-size: 1.2rem;
+      color: #fff;
+      padding-left: 6px;
+      user-select: none;
+    }
+
+    .slider-input {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .music-player {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .music-btn {
+      background: #ffaad4;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .music-btn:hover {
+      background: #f88cbb;
+    }
+
+    .music-btn::after {
+      content: "✨";
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: sparkle 1s infinite linear;
+    }
+
+    @keyframes sparkle {
+      0% { right: -20px; opacity: 0; }
+      50% { right: 50%; opacity: 1; }
+      100% { right: 100%; opacity: 0; }
+    }
+
+    .music-progress {
+      width: 100%;
+      height: 8px;
+      background-color: #f5c1da;
+      border-radius: 20px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: #ff69b4;
+      width: 0%;
+      transition: width 0.2s ease-in-out;
+    }
+
+    .social-feed {
+      margin-top: 30px;
+    }
+
+    .social-post {
+      background: #f4f4f4;
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease;
+    }
+
+    .dark-mode .social-post {
+      background: #2b2b2b;
+      color: white;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: #e75480;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .toggle-button {
+      margin-top: 20px;
+      padding: 8px 12px;
+      background-color: #f8a5c2;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .toggle-button:hover {
+      background-color: #e28ab3;
+    }
+
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .menu a {
+      display: block;
+      margin: 10px 0;
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .menu a i {
+      margin-right: 8px;
+    }
+
+    .social-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      color: #ff69b4;
+      animation: floatUp 5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-800px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <img src="win1.png" alt="Putu Sukanta" class="profile-pic" />
+      <h2>Putu Sukanta</h2>
+      <p>Santa Laurensia School</p>
+      <nav class="menu">
+        <a href="index.html"><i class="fas fa-user"></i> About Me</a>
+        <a href="karakter.html"><i class="fas fa-star"></i> Favourite Character</a>
+      </nav>
+      <button class="toggle-button" onclick="toggleMode()">🌙 Toggle Mode</button>
+      <audio id="bgMusic" src="ostmetawin (1).mp3" loop></audio>
+    </aside>
+
+    <div class="content">
+      <div class="hero-banner">
+        Chasing Dreams with a Smile – Metawin
+      </div>
+
+      <div class="character-section" id="characterSection">
+        <h1>🌟 My Favourite Character: Metawin Opas-iamkajorn</h1>
+
+        <div style="text-align: left; margin-bottom: 20px;">
+          <img id="metawinSwap" src="metawin.png" alt="Metawin Mood" style="width: 300px; height: 400px; border-radius: 20px; box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3); transition: opacity 0.5s ease; object-fit: cover;" />
+        </div>
+
+        <p class="quote">“Don’t be afraid to shine. You are meant to stand out.” – Metawin</p>
+
+        <h3>❤️ Why I Love Metawin</h3>
+        <ul>
+          <li>Multi-talented: actor, model, and singer 🎤🎬</li>
+          <li>Charming personality and super down-to-earth ✨</li>
+          <li>Fashionable and inspiring 💅</li>
+        </ul>
+
+        <h3>🎬 Favorite Shows</h3>
+        <ul>
+          <li>📺 <strong>2gether The Series</strong> – as Sarawat (legendary!)</li>
+          <li>💞 <strong>Still 2gether</strong> – more love and drama!</li>
+          <li>👔 <strong>Devil Sister</strong> – Win looking dashing!</li>
+        </ul>
+
+        <h3>🖼️ Before & After Slider</h3>
+        <div class="slider-container">
+          <div class="slider-wrapper">
+            <img src="metawin-before (1).png" alt="Before" class="slider-image-before">
+            <img src="metawin-after (1).png" alt="After" class="slider-image-after" id="afterImage">
+            <div class="slider-divider" id="divider">✨</div>
+          </div>
+          <input type="range" min="0" max="100" value="50" class="slider-input" id="slider" aria-label="Compare before and after image">
+
+          <div class="music-player">
+            <button class="music-btn" onclick="toggleMusic()" id="musicBtn">
+              ▶️ <span id="musicLabel">Play Music</span>
+            </button>
+            <div class="music-progress">
+              <div class="progress-bar" id="musicProgress"></div>
+            </div>
+          </div>
+        </div>
+
+        <h3>🌈 What He Inspires In Me</h3>
+        <p>Metawin inspires me to be confident, pursue my passions, and stay kind no matter how successful I become. He reminds me that hard work and being true to yourself are the keys to happiness.</p>
+
+        <h3>📲 Social Media Mock Feed</h3>
+        <div class="social-feed">
+          <div class="social-post">
+            <img src="win-profile.png" alt="Win Profile" class="social-pic" />
+            <strong>@winmetawin</strong><br>
+            "Vibes speaks louder" #WinMetawin #ShootingDay
+          </div>
+          <div class="social-post">
+            <img src="fan1.png" alt="Fan Profile" class="social-pic" />
+            <strong>@fanaccount</strong><br>
+            "He’s glowing in the new photoshoot 😍🔥" #WinVisual
+          </div>
+          <div class="social-post">
+            <img src="brightwin.png" alt="BrightWin Fan" class="social-pic" />
+            <strong>@brightwinfan</strong><br>
+            "Best duo forever 🫶 BrightWin forever!" #Still2gether #BFFGoals
+          </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to My Bio</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMode() {
+      const btn = document.querySelector('.toggle-button');
+      document.body.classList.toggle("dark-mode");
+      document.getElementById("characterSection").classList.toggle("dark");
+      btn.setAttribute('aria-pressed', document.body.classList.contains("dark-mode"));
+    }
+
+    const slider = document.getElementById('slider');
+    const afterImage = document.getElementById('afterImage');
+    const divider = document.getElementById('divider');
+    const music = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+
+    slider.addEventListener('input', function () {
+      const value = this.value;
+      afterImage.style.clipPath = `inset(0 ${100 - value}% 0 0)`;
+      divider.style.left = `${value}%`;
+    });
+
+    function toggleMusic() {
+      if (music.paused) {
+        music.volume = 0;
+        music.play();
+        musicBtn.innerHTML = "⏸️ Pause Music";
+        let vol = 0;
+        const fadeIn = setInterval(() => {
+          if (vol < 0.6) {
+            vol += 0.05;
+            music.volume = vol;
+          } else {
+            clearInterval(fadeIn);
+          }
+        }, 100);
+      } else {
+        music.pause();
+        musicBtn.innerHTML = "▶️ Play Music";
+      }
+    }
+
+    music.addEventListener('timeupdate', () => {
+      const progressPercent = (music.currentTime / music.duration) * 100;
+      const progressBar = document.getElementById('musicProgress');
+      progressBar.style.width = `${progressPercent}%`;
+    });
+
+    let swap = true;
+    setInterval(() => {
+      const img = document.getElementById("metawinSwap");
+      img.style.opacity = 0.5;
+      setTimeout(() => {
+        img.src = swap ? "metawin1.png" : "metawin.png";
+        img.style.opacity = 1;
+        swap = !swap;
+      }, 300);
+    }, 3000);
+
+    // Floating hearts generator
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.textContent = "💖";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 800);
+  </script>
+</body>
+</html>

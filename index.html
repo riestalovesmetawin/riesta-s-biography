@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Putu Sunari Seriesta Dewi Sukanta Profile</title>
+  <link
+    rel="stylesheet"
+    href="style.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <img src="win1.png" alt="Putu Sukanta" class="profile-pic" />
+      <h2>Putu Sukanta</h2>
+      <p>Santa Laurensia School</p>
+      <nav class="menu">
+         <a href="index.html"><i class="fas fa-user"></i> About Me</a>
+        <a href="karakter.html"><i class="fas fa-book"></i> Favourite Character</a>
+      </nav>
+
+      <button class="toggle-button" onclick="toggleMode()">🌙 Toggle Mode</button>
+      <button class="toggle-button" onclick="toggleMusic()">🎶 Toggle Music</button>
+<audio id="bgMusic" src="ostmetawin (1).mp3" loop></audio>
+
+    </aside>
+
+    <main class="content">
+      <div class="profile-card">
+        <div class="profile-flex">
+          <div class="image-container">
+            <img src="riesta22.png" alt="Putu Sukanta" />
+            <div class="header-text-overlay">
+              <h1>Putu Sunari Seriesta Dewi Sukanta</h1>
+              <p>Junior High School Student</p>
+            </div>
+          </div>
+          <div class="bio">
+            <h2>Student | Oldest Sister | Gamer</h2>
+             <p>Hi! I'm <strong>Putu Sunari Seriesta Dewi Sukanta</strong> — but you can call me <em>Riesta</em>! Born on <strong>November 19, 2010</strong> 🎂, I’m now 14 and living my best junior high life at <strong>Santa Laurensia School</strong> 📚.</p>
+  
+  <p>As the eldest sibling, I’m like the "boss" of the younger crew 🧒👧 — helping out, giving advice, and sometimes just being the cool (or chaotic) sister 😄.</p>
+
+  <h3>🎧 Things I Love:</h3>
+  <ul>
+    <li>🎮 <strong>Gaming</strong> — I really love games like mobile legends and roblox.</li>
+    <li>🎤 <strong>Singing</strong> — I sing whenever I’m happy, sad, or just in the mood to sing.</li>
+    <li>🛍️ <strong>Shopping</strong> — I love to walk around to buy clothes or make up.</li>
+    <li>📖 <strong>Learning</strong> — I enjoy doing practice questions for math.</li>
+  </ul>
+
+  <h3>📺 Favorite Series That Inspire Me:</h3>
+  <ul>
+    <li>💘 <em>2gether</em> & <em>Still 2gether</em></li>
+    <li>🏡 <em>Family by Choice</em></li>
+    <li>🧩 <em>Enigma</em></li>
+    <li>🗼 <em>Emily in Paris</em></li>
+    <li>⚔️ <em>The Untamed</em></li>
+    <li>👨‍👧 <em>Go Ahead</em></li>
+  </ul>
+
+  <p>These shows aren't just fun to watch — they’ve taught me about friendship and identity.</p>
+
+  <h3>💭 My Dreams:</h3>
+  <p>
+    One day, I hope to:
+    <ul>
+      <li>🌈 Get into my dream high school (inside or inside of the country)</li>
+      <li>🎙️ Getting into competitions with singing.</li>
+      <li>🌍 Travel the world.</li>
+      <li>🧠 Keep growing wiser, kinder, and braver every year</li>
+    </ul>
+  </p>
+
+  <h3>🌟 Fun Facts About Me:</h3>
+  <ul>
+    <li> I have four younger siblings!</li>
+    <li> I'm from Bali.</li>
+    <li> I enjoy reading e books.</li>
+  </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+    function toggleMusic() {
+  const music = document.getElementById("bgMusic");
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
+}
+function toggleMusic() {
+  const music = document.getElementById("bgMusic");
+  if (music.paused) {
+    music.volume = 0;
+    music.play();
+    let vol = 0;
+    const fadeIn = setInterval(() => {
+      if (vol < 0.6) {
+        vol += 0.05;
+        music.volume = vol;
+      } else {
+        clearInterval(fadeIn);
+      }
+    }, 100);
+  } else {
+    music.pause();
+  }
+}
+
+  </script>
+</body>
+</html>

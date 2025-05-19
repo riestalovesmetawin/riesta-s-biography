@@ -1,0 +1,1167 @@
+/* Google Font */
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Theme variables */
+:root {
+  --bg: #ffffff;
+  --text: #333333;
+  --sidebar-bg: #2f2f2f;
+  --sidebar-text: #ffffff;
+  --highlight: #444;
+}
+
+body.dark-mode {
+  --bg: #1e1e1e;
+  --text: #f0f0f0;
+  --sidebar-bg: #111;
+  --sidebar-text: #ddd;
+  --highlight: #333;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Container */
+.container {
+  display: flex;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 25px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.profile-pic {
+  width: 110px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.sidebar p {
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.menu a {
+  display: block;
+  color: var(--sidebar-text);
+  text-decoration: none;
+  margin: 12px 0;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.menu a:hover {
+  background-color: var(--highlight);
+}
+
+.menu i {
+  margin-right: 12px;
+}
+
+/* Dark Mode Toggle Button */
+.toggle-button {
+  margin-top: 30px;
+  background: none;
+  border: 2px solid var(--sidebar-text);
+  color: var(--sidebar-text);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.toggle-button:hover {
+  background-color: var(--highlight);
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 50px;
+  background-color: var(--bg);
+}
+
+/* Image with Overlay */
+.image-container {
+  position: relative;
+  max-width: 100%;
+  margin-bottom: 40px;
+}
+
+.image-container img {
+  width: 600px; /* or any size you prefer, e.g., 250px */
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.header-text-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.header-text-overlay h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.header-text-overlay p {
+  font-size: 20px;
+}
+
+.image-container:hover .header-text-overlay {
+  opacity: 0;
+  pointer-events: none; /* so it doesn't block mouse */
+}
+
+/* Bio Section */
+.bio h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.bio p {
+  font-size: 18px;
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .header-text-overlay {
+    bottom: 10px;
+    left: 15px;
+    font-size: 16px;
+  }
+
+  .header-text-overlay h1 {
+    font-size: 15px;
+  }
+
+  .header-text-overlay p {
+    font-size: 10px;
+  }
+}
+
+.profile-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap; /* So it stacks on small screens */
+}
+
+.image-container img {
+  width: 300px; /* or any preferred size */
+}
+
+/* Optional: Limit bio width on large screens */
+.bio {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Button style for the toggle button */
+.toggle-button {
+  margin-top: 30px;
+  background-color: #ff9fbb;        /* Soft pink */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;              /* Pill shape */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(255, 159, 187, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rotate the text inside the button */
+.toggle-button span {
+  display: inline-block;
+  transform: rotate(-15deg); /* Adjust the angle as you want */
+  transition: transform 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #ff6f91;       /* Darker pink on hover */
+  box-shadow: 0 6px 12px rgba(255, 111, 145, 0.6);
+}
+
+.toggle-button:hover span {
+  transform: rotate(0deg);
+}
+
+.toggle-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #ff9fbb;
+}
+
+/* Body background soft pink */
+body {
+  background-color: #ffe6f0; /* very light pink */
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  margin: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Sidebar soft pink */
+.sidebar {
+  background-color: #f8c8d8; /* soft pastel pink */
+  color: #5a3e4c; /* darker muted pink/purple for text */
+  padding: 25px;
+  text-align: center;
+  width: 260px;
+  flex-shrink: 0;
+  box-shadow: 2px 0 8px rgba(255, 182, 193, 0.5); /* subtle pink shadow */
+}
+
+/* Sidebar links */
+.menu a {
+  color: #5a3e4c;
+  transition: background 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+  background-color: #f1a8bf; /* slightly darker pink hover */
+  color: #fff;
+}
+
+/* Sidebar headings */
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+  color: #5a3e4c;
+}
+
+.sidebar p {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #7a5362;
+}
+
+:root {
+  --bg: #ffe6f0;
+  --text: #5a3e4c;
+  --sidebar-bg: #f8c8d8;
+  --sidebar-text: #5a3e4c;
+  --highlight: #f1a8bf;
+}
+
+body.dark-mode {
+  --bg: #4d2536;       /* dark muted pink/purple */
+  --text: #f9d6e0;     /* pale pink text */
+  --sidebar-bg: #672e44; /* dark rosy pink */
+  --sidebar-text: #f9d6e0;
+  --highlight: #a85a78;
+}
+
+/* Toggle Switch without knob */
+.toggle-switch {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  background: #ffb6c1;   /* light pink track */
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(255, 182, 193, 0.5);
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.toggle-switch input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  margin: 0;
+  z-index: 2;
+}
+
+/* The colored track layer */
+.toggle-track-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 20px;
+  background-color: #ffb6c1; /* same as .toggle-switch bg */
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
+
+/* Change background color when checked */
+.toggle-switch input:checked + .toggle-track-bg {
+  background-color: #ff6f91; /* darker pink */
+}
+
+/* Optional cute labels inside toggle */
+.toggle-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 6px;
+  color: #a14a63;
+  user-select: none;
+}
+.toggle-switch {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  background: #ffb6c1;   /* light pink track */
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(255, 182, 193, 0.5);
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  overflow: visible;
+}
+
+/* The toggle "circle" */
+.toggle-switch::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 182, 193, 0.6);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s;
+  will-change: transform;
+}
+
+/* Move circle and add bounce effect when toggled */
+.toggle-switch input:checked + .toggle-track-bg {
+  background-color: #ff6f91;
+}
+
+.toggle-switch input:checked ~ .toggle-track-bg {
+  background-color: #ff6f91;
+}
+
+.toggle-switch input:checked + .toggle-track-bg,
+.toggle-switch input:checked ~ .toggle-track-bg {
+  background-color: #ff6f91;
+}
+
+.toggle-switch input:checked ~ .toggle-track-bg {
+  background-color: #ff6f91;
+}
+
+/* Slide circle to right with bounce */
+.toggle-switch input:checked + .toggle-track-bg::before,
+.toggle-switch input:checked ~ .toggle-track-bg::before {
+  transform: translateX(28px);
+}
+
+/* Actually move the toggle circle using the pseudo element */
+.toggle-switch input:checked ~ .toggle-track-bg {
+  background-color: #ff6f91;
+}
+
+/* Using the sibling span for the track background */
+.toggle-track-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Move the toggle circle based on input checked */
+.toggle-switch input:checked + .toggle-track-bg::before {
+  transform: translateX(28px);
+  box-shadow: 0 0 10px rgba(255, 111, 145, 0.8);
+  animation: bounce 0.35s;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0% {
+    transform: translateX(28px) scale(1);
+  }
+  50% {
+    transform: translateX(30px) scale(1.1);
+  }
+  100% {
+    transform: translateX(28px) scale(1);
+  }
+}
+
+/* Cute label fade and scale */
+.toggle-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-top: 6px;
+  color: #a14a63;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .toggle-labels span:first-child {
+  color: #f9d6e0;
+}
+
+body.dark-mode .toggle-labels span:last-child {
+  color: #c48a9e;
+}
+
+/* Optional: scale label on hover */
+.toggle-labels span:hover {
+  color: #ff6f91;
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+/* Hide the checkbox input but keep it accessible */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+/* Google Font */
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Theme variables */
+:root {
+  --bg: #ffffff;
+  --text: #333333;
+  --sidebar-bg: #2f2f2f;
+  --sidebar-text: #ffffff;
+  --highlight: #444;
+}
+
+body.dark-mode {
+  --bg: #1e1e1e;
+  --text: #f0f0f0;
+  --sidebar-bg: #111;
+  --sidebar-text: #ddd;
+  --highlight: #333;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Container */
+.container {
+  display: flex;
+  min-height: 100vh;
+  flex-wrap: wrap;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 25px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.profile-pic {
+  width: 110px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.sidebar p {
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.menu a {
+  display: block;
+  color: var(--sidebar-text);
+  text-decoration: none;
+  margin: 12px 0;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.menu a:hover {
+  background-color: var(--highlight);
+}
+
+.menu i {
+  margin-right: 12px;
+}
+
+/* Dark Mode Toggle Button */
+.toggle-button {
+  margin-top: 30px;
+  background: none;
+  border: 2px solid var(--sidebar-text);
+  color: var(--sidebar-text);
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.toggle-button:hover {
+  background-color: var(--highlight);
+}
+
+/* Main Content */
+.content {
+  flex: 1;
+  padding: 50px;
+  background-color: var(--bg);
+}
+
+/* Image with Overlay */
+.image-container {
+  position: relative;
+  max-width: 100%;
+  margin-bottom: 40px;
+}
+
+.image-container img {
+  width: 600px; /* or any size you prefer, e.g., 250px */
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.header-text-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: opacity 0.3s ease;
+}
+
+.header-text-overlay h1 {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.header-text-overlay p {
+  font-size: 20px;
+}
+
+.image-container:hover .header-text-overlay {
+  opacity: 0;
+  pointer-events: none; /* so it doesn't block mouse */
+}
+
+/* Bio Section */
+.bio h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+.bio p {
+  font-size: 18px;
+  margin-bottom: 18px;
+  line-height: 1.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .header-text-overlay {
+    bottom: 10px;
+    left: 15px;
+    font-size: 16px;
+  }
+
+  .header-text-overlay h1 {
+    font-size: 15px;
+  }
+
+  .header-text-overlay p {
+    font-size: 10px;
+  }
+}
+
+.profile-flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  flex-wrap: wrap; /* So it stacks on small screens */
+}
+
+.image-container img {
+  width: 300px; /* or any preferred size */
+}
+
+/* Optional: Limit bio width on large screens */
+.bio {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Button style for the toggle button */
+.toggle-button {
+  margin-top: 30px;
+  background-color: #ff9fbb;        /* Soft pink */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;              /* Pill shape */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(255, 159, 187, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rotate the text inside the button */
+.toggle-button span {
+  display: inline-block;
+  transform: rotate(-15deg); /* Adjust the angle as you want */
+  transition: transform 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #ff6f91;       /* Darker pink on hover */
+  box-shadow: 0 6px 12px rgba(255, 111, 145, 0.6);
+}
+
+.toggle-button:hover span {
+  transform: rotate(0deg);
+}
+
+.toggle-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #ff9fbb;
+}
+
+/* Body background soft pink */
+body {
+  background-color: #ffe6f0; /* very light pink */
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  margin: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Sidebar soft pink */
+.sidebar {
+  background-color: #f8c8d8; /* soft pastel pink */
+  color: #5a3e4c; /* darker muted pink/purple for text */
+  padding: 25px;
+  text-align: center;
+  width: 260px;
+  flex-shrink: 0;
+  box-shadow: 2px 0 8px rgba(255, 182, 193, 0.5); /* subtle pink shadow */
+}
+
+/* Sidebar links */
+.menu a {
+  color: #5a3e4c;
+  transition: background 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+  background-color: #f1a8bf; /* slightly darker pink hover */
+  color: #fff;
+}
+
+/* Sidebar headings */
+.sidebar h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+  color: #5a3e4c;
+}
+
+.sidebar p {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #7a5362;
+}
+
+:root {
+  --bg: #ffe6f0;
+  --text: #5a3e4c;
+  --sidebar-bg: #f8c8d8;
+  --sidebar-text: #5a3e4c;
+  --highlight: #f1a8bf;
+}
+
+body.dark-mode {
+  --bg: #4d2536;       /* dark muted pink/purple */
+  --text: #f9d6e0;     /* pale pink text */
+  --sidebar-bg: #672e44; /* dark rosy pink */
+  --sidebar-text: #f9d6e0;
+  --highlight: #a85a78;
+}
+
+/* Toggle Switch without knob */
+.toggle-switch {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  background: #ffb6c1;   /* light pink track */
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(255, 182, 193, 0.5);
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.toggle-switch input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  margin: 0;
+  z-index: 2;
+}
+
+/* The colored track layer */
+.toggle-track-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 20px;
+  background-color: #ffb6c1; /* same as .toggle-switch bg */
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
+
+/* Change background color when checked */
+.toggle-switch input:checked + .toggle-track-bg {
+  background-color: #ff6f91; /* darker pink */
+}
+
+/* Optional cute labels inside toggle */
+.toggle-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 6px;
+  color: #a14a63;
+  user-select: none;
+}
+.toggle-switch {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  background: #ffb6c1;   /* light pink track */
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(255, 182, 193, 0.5);
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  overflow: visible;
+}
+
+/* The toggle "circle" */
+.toggle-switch::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 182, 193, 0.6);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s;
+  will-change: transform;
+}
+
+/* Move circle and add bounce effect when toggled */
+.toggle-switch input:checked + .toggle-track-bg {
+  background-color: #ff6f91;
+}
+
+.toggle-switch input:checked ~ .toggle-track-bg {
+  background-color: #ff6f91;
+}
+
+.toggle-switch input:checked + .toggle-track-bg,
+.toggle-switch input:checked ~ .toggle-track-bg {
+  background-color: #ff6f91;
+}
+
+.toggle-switch input:checked ~ .toggle-track-bg {
+  background-color: #ff6f91;
+}
+
+/* Slide circle to right with bounce */
+.toggle-switch input:checked + .toggle-track-bg::before,
+.toggle-switch input:checked ~ .toggle-track-bg::before {
+  transform: translateX(28px);
+}
+
+/* Actually move the toggle circle using the pseudo element */
+.toggle-switch input:checked ~ .toggle-track-bg {
+  background-color: #ff6f91;
+}
+
+/* Using the sibling span for the track background */
+.toggle-track-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Move the toggle circle based on input checked */
+.toggle-switch input:checked + .toggle-track-bg::before {
+  transform: translateX(28px);
+  box-shadow: 0 0 10px rgba(255, 111, 145, 0.8);
+  animation: bounce 0.35s;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0% {
+    transform: translateX(28px) scale(1);
+  }
+  50% {
+    transform: translateX(30px) scale(1.1);
+  }
+  100% {
+    transform: translateX(28px) scale(1);
+  }
+}
+
+/* Cute label fade and scale */
+.toggle-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-top: 6px;
+  color: #a14a63;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .toggle-labels span:first-child {
+  color: #000000;
+}
+
+body.dark-mode .toggle-labels span:last-child {
+  color: #c48a9e;
+}
+
+/* Optional: scale label on hover */
+.toggle-labels span:hover {
+  color: #ff6f91;
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+
+.sidebar:hover {
+  background-color: #f9d0de; /* a lighter pastel pink */
+  transition: background-color 0.3s ease;
+}
+.profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(255, 159, 187, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.content:hover {
+  background-color: #ffe0ed; /* soft pink shade */
+  transition: background-color 0.3s ease;
+}
+.menu a {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: var(--highlight);
+  color: #fff;
+  transform: scale(1.05);
+}
+.menu a {
+  position: relative;
+  display: inline-block;
+  color: #444;
+  text-decoration: none;
+  padding: 10px 15px;
+  transition: color 0.3s ease;
+}
+
+.menu a i {
+  margin-right: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effects */
+.menu a:hover {
+  color: #d6336c; /* change text color on hover */
+}
+
+.menu a:hover i {
+  transform: translateX(5px); /* icon slides to the right */
+}
+
+/* Animated Underline */
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: 5px;
+  width: 0;
+  height: 2px;
+  background-color: #d6336c;
+  transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+  width: calc(100% - 30px); /* animate underline from left to right */
+}
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark-mode .content {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .sidebar {
+  background-color: #111;
+}
+
+body.dark-mode a {
+  color: #f0f0f0;
+}
+
+body.dark-mode a:hover {
+  color: #ff79c54b;
+}
+.content:hover {
+  background-color: white;  /* ← problem! */
+}
+.bio:hover::after {
+  content: '✨';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  animation: sparkle 1.2s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5) rotate(20deg); }
+}
+/* === Cute Bio Animations & Styling === */
+.bio {
+  animation: fadeIn 1.5s ease-in-out;
+  padding: 20px;
+  background-color: #fffdfb;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(255, 192, 203, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.bio:hover {
+  background-color: #fff0f5;
+}
+
+/* Header animations */
+.bio h2, .bio h3 {
+  color: #ff69b4;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  animation: popIn 0.8s ease-in-out;
+}
+
+/* Fun list styling */
+.bio ul {
+  list-style-type: "💫 ";
+  margin-left: 20px;
+  animation: slideInUp 1s ease forwards;
+}
+
+.bio li {
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.bio li:hover {
+  transform: scale(1.05);
+  color: #db4cb2;
+}
+
+/* Paragraph glow hover */
+.bio p:hover {
+  background-color: #fffafc;
+  border-left: 5px solid #ffb6c1;
+  padding-left: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* === Keyframe Animations === */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.main-content {
+  cursor: url('images/Desain\ tanpa\ judul\ \(3\).png') 16 16, auto;
+}
+/* DARK MODE FIX */
+.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.dark-mode .content,
+.dark-mode .profile-card {
+  background-color: #1e1e1e;
+  color: #f0f0f033;
+}
+
+.dark-mode h1, 
+.dark-mode h2, 
+.dark-mode h3, 
+.dark-mode p, 
+.dark-mode li {
+  color: #3a38387c;
+}
+
+.dark-mode .bio ul li::marker {
+  color: #ff79c6
+}
+.hero-banner {
+  width: 100%;
+  height: 300px;
+  /* background-size: cover */
+}
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: url('metawin-banner.gif') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px #000;
+  margin-bottom: 30px;
+}
+.slider-image-after {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.slider-image-after {
+  transition: clip-path 0.3s ease;
+}
